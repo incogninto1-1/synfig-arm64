@@ -1,0 +1,10 @@
+image/sif:
+	open=/home/incogninto1-1/synfig/_production/build/bin/synfigstudio %f
+	view=/home/incogninto1-1/synfig/_production/build/bin/synfigstudio %f
+	icon-filename=/home/incogninto1-1/synfig/_production/build/share/pixmaps/sif_icon.png
+	description=SYNFIG Composition
+	default_action_type=application
+	short_list_application_ids_for_novice_user_level=synfigstudio
+	short_list_application_ids_for_intermediate_user_level=synfigstudio
+	short_list_application_ids_for_advanced_user_level=synfigstudio
+#    category=Images

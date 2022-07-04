@@ -1,0 +1,20 @@
+COLOR_HH = \
+	color/color.h \
+	color/color.hpp \
+	color/colormatrix.h \
+	color/pixelformat.h \
+	color/common.h \
+	color/gamma.h
+
+COLOR_CC = \
+	color/color.cpp \
+	color/colormatrix.cpp \
+	color/pixelformat.cpp
+
+libsynfig_include_HH += \
+    $(COLOR_HH)
+
+libsynfig_src += \
+    $(COLOR_HH) \
+	color/colorblendingfunctions.h \
+    $(COLOR_CC)

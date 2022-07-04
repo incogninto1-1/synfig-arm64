@@ -1,0 +1,24 @@
+RENDERING_COMMON_TASK_HH = \
+	rendering/common/task/taskblend.h \
+	rendering/common/task/taskblur.h \
+	rendering/common/task/taskcontour.h \
+	rendering/common/task/tasklayer.h \
+	rendering/common/task/taskmesh.h \
+	rendering/common/task/taskpixelprocessor.h \
+	rendering/common/task/tasktransformation.h
+
+RENDERING_COMMON_TASK_CC = \
+	rendering/common/task/taskblend.cpp \
+	rendering/common/task/taskblur.cpp \
+	rendering/common/task/taskcontour.cpp \
+	rendering/common/task/tasklayer.cpp \
+	rendering/common/task/taskmesh.cpp \
+	rendering/common/task/taskpixelprocessor.cpp \
+	rendering/common/task/tasktransformation.cpp
+
+RENDERING_COMMON_HH += \
+    $(RENDERING_COMMON_TASK_HH)
+
+RENDERING_COMMON_CC += \
+    $(RENDERING_COMMON_TASK_CC)
+

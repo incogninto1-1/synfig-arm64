@@ -1,0 +1,5 @@
+Package: synfig-arm64
+Version: 1.0
+Architecture: arm64
+Maintainer: Incogninto1-1 <incogninto123@gmail.com>
+Description: An ARM64 port of the Synfig software suite compiled on a Raspberry Pi 3B (not +) made for transitioning from x86-64 to ARM64. Enjoy!

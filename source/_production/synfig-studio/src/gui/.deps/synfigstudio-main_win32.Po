@@ -1,0 +1,4 @@
+synfigstudio-main_win32.o: \
+ /home/incogninto1-1/synfig/synfig-studio/src/gui/main_win32.cpp \
+ /usr/include/stdc-predef.h
+/usr/include/stdc-predef.h:

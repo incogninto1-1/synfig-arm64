@@ -1,0 +1,67 @@
+modules/synfigstudio-module.o: \
+ /home/incogninto1-1/synfig/synfig-studio/src/gui/modules/module.cpp \
+ /usr/include/stdc-predef.h ../../config.h \
+ /home/incogninto1-1/synfig/synfig-studio/src/gui/modules/module.h \
+ /home/incogninto1-1/synfig/ETL/ETL/handle \
+ /home/incogninto1-1/synfig/ETL/ETL/etl_config.h \
+ /home/incogninto1-1/synfig/_production/build/include/ETL/ETL/etl_profile.h \
+ /home/incogninto1-1/synfig/ETL/ETL/_handle.h /usr/include/c++/10/cassert \
+ /usr/include/aarch64-linux-gnu/c++/10/bits/c++config.h \
+ /usr/include/aarch64-linux-gnu/c++/10/bits/os_defines.h \
+ /usr/include/features.h /usr/include/aarch64-linux-gnu/sys/cdefs.h \
+ /usr/include/aarch64-linux-gnu/bits/wordsize.h \
+ /usr/include/aarch64-linux-gnu/bits/long-double.h \
+ /usr/include/aarch64-linux-gnu/gnu/stubs.h \
+ /usr/include/aarch64-linux-gnu/gnu/stubs-lp64.h \
+ /usr/include/aarch64-linux-gnu/c++/10/bits/cpu_defines.h \
+ /usr/include/assert.h /usr/include/c++/10/typeinfo \
+ /usr/include/c++/10/bits/exception.h \
+ /usr/include/c++/10/bits/hash_bytes.h /usr/include/c++/10/atomic \
+ /usr/include/c++/10/bits/atomic_base.h \
+ /usr/lib/gcc/aarch64-linux-gnu/10/include/stdint.h /usr/include/stdint.h \
+ /usr/include/aarch64-linux-gnu/bits/libc-header-start.h \
+ /usr/include/aarch64-linux-gnu/bits/types.h \
+ /usr/include/aarch64-linux-gnu/bits/timesize.h \
+ /usr/include/aarch64-linux-gnu/bits/typesizes.h \
+ /usr/include/aarch64-linux-gnu/bits/time64.h \
+ /usr/include/aarch64-linux-gnu/bits/wchar.h \
+ /usr/include/aarch64-linux-gnu/bits/stdint-intn.h \
+ /usr/include/aarch64-linux-gnu/bits/stdint-uintn.h \
+ /usr/include/c++/10/bits/atomic_lockfree_defines.h \
+ /usr/include/c++/10/bits/move.h /usr/include/c++/10/type_traits
+/usr/include/stdc-predef.h:
+../../config.h:
+/home/incogninto1-1/synfig/synfig-studio/src/gui/modules/module.h:
+/home/incogninto1-1/synfig/ETL/ETL/handle:
+/home/incogninto1-1/synfig/ETL/ETL/etl_config.h:
+/home/incogninto1-1/synfig/_production/build/include/ETL/ETL/etl_profile.h:
+/home/incogninto1-1/synfig/ETL/ETL/_handle.h:
+/usr/include/c++/10/cassert:
+/usr/include/aarch64-linux-gnu/c++/10/bits/c++config.h:
+/usr/include/aarch64-linux-gnu/c++/10/bits/os_defines.h:
+/usr/include/features.h:
+/usr/include/aarch64-linux-gnu/sys/cdefs.h:
+/usr/include/aarch64-linux-gnu/bits/wordsize.h:
+/usr/include/aarch64-linux-gnu/bits/long-double.h:
+/usr/include/aarch64-linux-gnu/gnu/stubs.h:
+/usr/include/aarch64-linux-gnu/gnu/stubs-lp64.h:
+/usr/include/aarch64-linux-gnu/c++/10/bits/cpu_defines.h:
+/usr/include/assert.h:
+/usr/include/c++/10/typeinfo:
+/usr/include/c++/10/bits/exception.h:
+/usr/include/c++/10/bits/hash_bytes.h:
+/usr/include/c++/10/atomic:
+/usr/include/c++/10/bits/atomic_base.h:
+/usr/lib/gcc/aarch64-linux-gnu/10/include/stdint.h:
+/usr/include/stdint.h:
+/usr/include/aarch64-linux-gnu/bits/libc-header-start.h:
+/usr/include/aarch64-linux-gnu/bits/types.h:
+/usr/include/aarch64-linux-gnu/bits/timesize.h:
+/usr/include/aarch64-linux-gnu/bits/typesizes.h:
+/usr/include/aarch64-linux-gnu/bits/time64.h:
+/usr/include/aarch64-linux-gnu/bits/wchar.h:
+/usr/include/aarch64-linux-gnu/bits/stdint-intn.h:
+/usr/include/aarch64-linux-gnu/bits/stdint-uintn.h:
+/usr/include/c++/10/bits/atomic_lockfree_defines.h:
+/usr/include/c++/10/bits/move.h:
+/usr/include/c++/10/type_traits:

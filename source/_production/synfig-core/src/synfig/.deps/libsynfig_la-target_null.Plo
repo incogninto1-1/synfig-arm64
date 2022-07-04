@@ -1,0 +1,5 @@
+libsynfig_la-target_null.lo: \
+ /home/incogninto1-1/synfig/synfig-core/src/synfig/target_null.cpp \
+ /usr/include/stdc-predef.h ../../config.h
+/usr/include/stdc-predef.h:
+../../config.h:

@@ -1,0 +1,13 @@
+set(INSTALL_DESTINATION "share/synfig/sounds")
+set(SOUND_FILES
+    renderdone.wav
+    readme.txt
+)
+
+file(COPY ${SOUND_FILES}
+    DESTINATION ${SYNFIG_BUILD_ROOT}/${INSTALL_DESTINATION}
+)
+
+install(FILES ${SOUND_FILES}
+    DESTINATION ${INSTALL_DESTINATION}
+)

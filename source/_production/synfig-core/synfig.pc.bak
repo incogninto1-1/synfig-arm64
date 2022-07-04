@@ -1,0 +1,11 @@
+prefix=/home/incogninto1-1/synfig/_production/build
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=/home/incogninto1-1/synfig/_production/build/include/synfig-1.0
+
+Name: synfig
+Description: Synfig Core
+Requires:  Magick++ freetype2 fontconfig OpenEXR ETL glibmm-2.4 giomm-2.4 libxml++-2.6 sigc++-2.0 fftw3 mlt++
+Version: 1.5.1
+Libs: -L${libdir} -lsynfig
+Cflags:  -I${includedir}

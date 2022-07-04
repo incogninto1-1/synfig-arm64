@@ -1,0 +1,7 @@
+libsynfig_la-uniqueid.lo: \
+ /home/incogninto1-1/synfig/synfig-core/src/synfig/uniqueid.cpp \
+ /usr/include/stdc-predef.h ../../config.h \
+ /home/incogninto1-1/synfig/synfig-core/src/synfig/uniqueid.h
+/usr/include/stdc-predef.h:
+../../config.h:
+/home/incogninto1-1/synfig/synfig-core/src/synfig/uniqueid.h:

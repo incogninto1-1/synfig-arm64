@@ -1,0 +1,565 @@
+## Version 1.4.2
+- [`6b0d418`](https://github.com/synfig/synfig/commit/6b0d4185255cc534940709c9001227d1ef52ba68) [Autotools] Fixed problem with missing \*.glsl files in distribution ([#1982](https://github.com/synfig/synfig/issues/1982))
+- [`4ddd22d`](https://github.com/synfig/synfig/commit/4ddd22d8de1f4729c83fe0b0e8cde5b46fd84e87) Merge PR [#1995](https://github.com/synfig/synfig/issues/1995): [Core] create stringhelper
+- [`885f3ac`](https://github.com/synfig/synfig/commit/885f3ac6ebb87252439df7bbb2eec2eb8b29e2c4) [Core] Fix missing is_distance hint for vertex coordinates ([#2000](https://github.com/synfig/synfig/issues/2000))
+- [`b660807`](https://github.com/synfig/synfig/commit/b6608075a87fe17e3615947b08a73ad91be05726) [Core/Studio] Fix missing const qualifier for some relational operators overrides ([#2001](https://github.com/synfig/synfig/issues/2001))
+- [`0f7fb39`](https://github.com/synfig/synfig/commit/0f7fb391fb4c682515aaa94098ae85c180a92dbb) [Core] LinkableValueNode now provides methods for inverse manipulation ([#2057](https://github.com/synfig/synfig/issues/2057))
+- [`b1468c7`](https://github.com/synfig/synfig/commit/b1468c7dead6f12e0882ac4cd364c445074d4cf7) [Synfig Studio] make TimeLoop valuenode editable via workspace ([#2066](https://github.com/synfig/synfig/issues/2066))
+- [`65f50eb`](https://github.com/synfig/synfig/commit/65f50eb4e4c180243b58425620a0905ae0f7c01b) [Synfig Studio] fix skeleton deformation duplication ([#2071](https://github.com/synfig/synfig/issues/2071))
+- [`fd1e5ec`](https://github.com/synfig/synfig/commit/fd1e5ecdc3cf2cf9cb2ee642ca7f7b89aa04b40b) sometimes Widget_Vector didn't use locale for decimal separator ([#2102](https://github.com/synfig/synfig/issues/2102))
+- [`3c0f04d`](https://github.com/synfig/synfig/commit/3c0f04d55e54459e36b7872812a07772989e74d0) Fixed 'locale::facet::_S_create_c_locale name not valid' error when compiling with MinGW compiler ([#2157](https://github.com/synfig/synfig/issues/2157))
+- [`9a2187c`](https://github.com/synfig/synfig/commit/9a2187cdb250c958f46c9d9357b53d6606bccf1d) Merge PR [#1260](https://github.com/synfig/synfig/issues/1260): Fixed exception throwing by mistake in dot-product valuenode creation
+- [`4789a5b`](https://github.com/synfig/synfig/commit/4789a5b864a290caf1d3081c84c17b79869f7a4c) [Core] A little refactoring of loadcanvas.cpp ([#1956](https://github.com/synfig/synfig/issues/1956))
+- [`d76d77f`](https://github.com/synfig/synfig/commit/d76d77fc4d58a847e5883915ecca0c362b62a648) Fixed issue with saving `loop` flag in some dynamic lists ([#2165](https://github.com/synfig/synfig/issues/2165))
+- [`93365c5`](https://github.com/synfig/synfig/commit/93365c51a509d6d013d7c0f76c7be64693c8fd75) Merge PR [#2137](https://github.com/synfig/synfig/issues/2137): Fix memory leaks on SVG parser/importer
+- [`d3906ca`](https://github.com/synfig/synfig/commit/d3906ca969de15df00776353d13387317e08ca38) Merge PR [#1853](https://github.com/synfig/synfig/issues/1853): `etl::clock` refactored to use `std::chrono`
+- [`71de9ff`](https://github.com/synfig/synfig/commit/71de9ff60b337c952abd983563cc7736a00ad714) Fix various typos ([#2061](https://github.com/synfig/synfig/issues/2061))
+- [`5718557`](https://github.com/synfig/synfig/commit/571855713add1c0bf6ac5a1df357a4f47e7f53c3) Fixed incorrect background redrawing on animated GIFs with transparent background ([#2134](https://github.com/synfig/synfig/issues/2134))
+## Version 1.4.1
+- [`2f18910`](https://github.com/synfig/synfig/commit/2f18910f4dc1657300574cec93db60a429755d9b) assure uniqueness for new node guid ([#2029](https://github.com/synfig/synfig/issues/2029))
+- [`349810e`](https://github.com/synfig/synfig/commit/349810e2f9a25af3297b776ee88c6c035abdb717) Fixed issue with rendering to file when using non-Latin filenames ([#1940](https://github.com/synfig/synfig/issues/1940))
+- [`8809482`](https://github.com/synfig/synfig/commit/8809482a2f4485155324b6b49481fb8303094bb9) Added support for loading `average` values ([#1955](https://github.com/synfig/synfig/issues/1955))
+- [`7d68380`](https://github.com/synfig/synfig/commit/7d683807d8141e1269f8acb40454d62d1c5c254a) Fixed incorrect import of `lst` files when path contains non-Latin characters ([#1924](https://github.com/synfig/synfig/issues/1924))
+- [`0bd6fd5`](https://github.com/synfig/synfig/commit/0bd6fd5bde72abe358f841c8a06cc56f3c1f8f86) Merge PR [#1889](https://github.com/synfig/synfig/issues/1889): [Synfig Studio/Windows] Fixed load/save operations for Palette editor
+- [`f8de319`](https://github.com/synfig/synfig/commit/f8de31931c1de367f70f46c839a518ea8d4012d2) Fix crash in Spline Tangent converter ([#1836](https://github.com/synfig/synfig/issues/1836))
+- [`03ab84d`](https://github.com/synfig/synfig/commit/03ab84debd51a23d430c8e214ed799ab6ef4a59f) Fixed error when output to MPEG-1 format with audio ([#1830](https://github.com/synfig/synfig/issues/1830))
+- [`23bf66a`](https://github.com/synfig/synfig/commit/23bf66ab53aa7bd3ef3a70fb4488a97b005da3da) Fix animation interpolation for boolean values ([#1826](https://github.com/synfig/synfig/issues/1826))
+- [`985afc4`](https://github.com/synfig/synfig/commit/985afc44935778396406150c130b9653b977def3) fix Duplicate layer ignoring all layers but the first one ([#1829](https://github.com/synfig/synfig/issues/1829))
+- [`a583e73`](https://github.com/synfig/synfig/commit/a583e73d4c47914284b15f4a8d7719eafddfe1b4) autotools: pango and imagemagick c++ flags and libs have been moved to their respective modules ([#1688](https://github.com/synfig/synfig/issues/1688))
+- [`383fcf8`](https://github.com/synfig/synfig/commit/383fcf8) [Autotools] remove support for broken OpenGL rendering ([#2055](https://github.com/synfig/synfig/issues/2055))
+- [`19112f1`](https://github.com/synfig/synfig/commit/19112f10adf3b25aad93057d7a0ed03d35b0b2de) Fix crash in Spline Vertex converter ([#1802](https://github.com/synfig/synfig/issues/1802))
+- [`99a1cde`](https://github.com/synfig/synfig/commit/99a1cde2b1e54540857925e6899deb708e17f305) Export video files with sound ([#1623](https://github.com/synfig/synfig/issues/1623))
+
+--------------------------
+
+ 1.4.0 (git tag "v1.4.0") - Major release.
+ 
+  * Implemented downsampling for image layers.
+  * Added "Preview" rendering mode for workarea.
+  * Major optimization of parsing scenes with many layers (issue #314).
+  * Optimizations for Outline Layer, Region Layer, Checkerboard Layer, SuperSample Layer.
+  * Basic functionality for importing video files.
+  * Fixed onionsking.
+  * Changes for onion-skin functionality - in all previous versions it was linked to keyframes only, now it is set relatively to ordinary frames.
+  * Major cleanup of code responsible for sound playback, fixed non-working volume parameter and eliminated synchronization issues.
+  * Advanced Outline Layer: Added two new types of tips - "Off-Peak Stop" and "Inner Rounded Stop". They can be used to define outline start/end and dashes.
+  * Switch Layer: Now it is possible to select visible layer by index (see "Active Layer Depth" parameter).
+  * Rectangle Layer: now it is possible to define two types of rounded corners and horizontal/vertical feather.
+  * Filled Rectangle Layer deprecated.
+  * Changed Gamma handling: Global Gamma option removed, Gamma is now defined on per-document basis, default gamma value = 1.0, for old documents it is set to 2.2.
+  * Fixed behavior “Local Time” parameter of Time Loop layer (issue #479).
+  * DashItem Offset and Length parameters now use consistent units when editing them (issue #1265).
+  * Fixed issues opening and exporting of files with multibyte (i.e. Arabic) symbols in filename.
+  * Homogeneous parameter of Advanced Outline is enabled and static by default.
+  * Set Animation Speed parameter of Noise Distort Layer as static by default.
+  * Fixed crash when exporting with “pngspritesheet” target (issue #356).
+  * Fixed crash when removing spline vertex too fast.
+  * Fixed crash when unexporting value node (issue #231).
+  
+
+ 1.2.2 (git tag "1.2.2") - Bugfix release.
+ 
+  * Amount set to 0 for missing images (issue #373). Thanks to Ivan Mahonin.
+  * Fix for the cases when PNG file imported with incorrect color (issue #366). Thanks to Ivan Mahonin.
+  * Auto-recovery now works again (issue #363). Thanks to Ivan Mahonin.
+  * Fix Low-Res rendering mode (issue #401). Thanks to Ivan Mahonin.
+  * Introduced Draft rendering mode (issue #409). Thanks to Ivan Mahonin.
+  * Fix broken localization (issue #408). Thanks to Ivan Mahonin.
+  * Automatically choose "ffmpeg" target when rendering to "mp4" files. Thanks to Konstantin Dmitriev.
+  * Fix wrong selection area for Circle Layer (issue #442). Thanks to Olivier Jolly.
+  * New feature: Filter Groups (issue #462). Thanks to Ivan Mahonin.
+  * Fix compatibility with ImageMagick 7 (issue #478). Thanks to Matthew White.
+  * Fixed crash on Windows when closed file is re-loaded (issue #521). Thanks to Artem Konoplin.
+  * New feature: Live image reloading (issue #513). Thanks to Artem Konoplin.
+  * Fixed freeze on SVG import (issue #290). Thanks to Artem Konoplin.
+
+ 1.2.1 (git tag "1.2.1") - September 11, 2017 - Bugfix release.
+
+  * Fix artifacts of Fast Gaussian Blur. Thanks to Ivan Mahonin.
+  * Fix incorrect rendering of Twirl and Noise Distortion layers (issues #305 and #316). Thanks to Ivan Mahonin.
+  * Basic support for CMake build system. Thanks to Caryoscelus.
+  * Improve performance for complex scenes with more than 1000 vector elements (issue #314). Thanks to Ivan Mahonin.
+  * Fix Z-Depth issues for ungroupped layers (issue #299). Thanks to Ivan Mahonin.
+  * Fixed rendering of text with international characters on Windows  (issue #379). Thanks to Ivan Mahonin.
+
+ 1.2.0 (git tag "1.2.0") - December 22, 2016 - Major release.
+ 
+  * Feature: Rendering engine completely rewritten and optimized. Thanks to Ivan Mahonin.
+  * Reduced memory usage for image layers (2-4 times comparing to version 1.0.2). Thanks to Ivan Mahonin.
+  * Utilize multiple threads when rendering via CLI. Thanks to Ivan Mahonin.
+  * Synfig code now compatible with C++11 (see issue #904). Thanks to Jerome Blanchi.
+  * Fixed issues with loading sif files generated by Inkscape (bug #883).
+  * "Add" converter now supports reverse manipulations for Vector value types. Thanks to Ivan Mahonin.
+
+ 1.0.2 (git tag "1.0.2") - October 9, 2015 - Bugfix release.
+ 
+  * "On" and "Off" parameters of a "Switch" convert now aren't linked by default (issue #766). Thanks to Max May.
+  * Allow to convert "Time" type to "Real". Thanks to Max May.
+  * Group Layer now have "Speed" parameter to adjust the playback of child layers. Thanks to Max May.
+  * New convert type: Reverse. Allows to reverse lists, strings, spline points, segments, gradients, width points and dash items. Thanks to Max May.
+  * The "Add" convert type now supports reverse manipulations for Real and Angle values.
+  * Forbid creating recursive (looped) connections for parameters (issue #48). Thanks to Jerome Blanchi.
+ 
+ 1.0.1 (git tag "1.0.1") - July 21, 2015 - Bugfix release.
+ 
+  * Fix reading alpha for images with indexed palette (bug #110).
+  * Fix crash if no fonts found.
+  * Internals: Reorganize layers and valuenodes into separate folders.
+
+ 1.0 (git tag "1.0") - April 27, 2015 - Major release.
+ 
+  * Introduce new file format (SFG) which can store embed data.
+  * Group Layer now supports all basic transformations: Translate, Rotate, Scale, Stretch, Skew.
+  * Improved Spline Tangents: Now it is possible to split angle or radius independently.
+  * New ValueNode: Dynamic.
+  * New ValueNode: Average.
+  * New ValueNode: Weighted Average.
+  * New Layer: Skeleton Distortion.
+  * Sound: Integrate MLT framework for sound Playback.
+  * New layer: Sound Layer.
+  * Z-Range feature for Groups: Hides all child layers with Z-Depth values outside of specified range.
+  * Reworked software rendering engine.
+
+ 0.64.3 (git tag "0.64.3") - December 24, 2014 - Bug fixes.
+ 
+  * Fix crash for Magick++, Gif and other targets.
+  * Fix FFmpeg target for Ubuntu 14.10 (bug #729).
+  * Fix Extract Alpha option for CairoPng target (bug #730).
+  
+ 0.64.2 (git tag "0.64.2") - October 18, 2014 - Minor features, bug fixes.
+  
+  * Rendering: Allow to set mode of alpha handling.
+  * Rendering: "Extract Alpha" mode ("--extract-alpha" or "-x" CLI option).
+  * Rendering: Lossles H.264 encoding profile.
+  * Fix ffmpeg target for Ubuntu (bug #118).
+  * Fix file saving in Windows (bug #572).
+  * Fix compatibility issues for OSX 10.9.
+
+ 0.64.1 (git tag "0.64.1") - November 4, 2013 - Features, bug fixes.
+  
+  * Parameters are stored as ValueBase now.
+  * Core Bones implementation / Skeleton layer.
+  * Implement Cairo rendering for all layers.
+  * Default interpolation could be defined specifically for parameter.
+  * Option to exclude layers from rendering.
+  * Fix ffmpeg target in Windows build (bug #118).
+ 
+ 0.64.0 (git tag "synfig-0.64.0") - May 06 2013 - Major features, bug fixes.
+ 
+  * New CLI based on boost libraries. 
+  * New plugin system
+  * New Cairo render engine
+  * Terminology renaming
+  * Keyframes can now be enabled and disabled
+  * New sequence separator option
+  * Fix bug ID: 2684968: render is one frame short.
+  * Fixed bug that happens when BLine passed is empty.
+  * Fix bug: ID: 3523296 Onion skin and tile render are broken.
+  * Fix bug ID: 3474332: Play/pause by shortcut causes canvas to stop updating.
+  * Add Real convert type, fixes #324
+
+ 0.63.05 (git tag "synfig-0.63.05") - April 09 2012 - Features, bug fixes.
+
+ * Roll back fix bug ID 3405011 because it produced other worse bug.
+ * New Outline Grow parameter on Paste Canvas layer. For inline canvases it increases (decreases) the width of the children layers by a exponential factor.
+ * Add new parameter to the CLI '--sequence-separator' option for separator string on image sequence render. Default is a dot '.' Forbidden space character.
+ * Fix bug: ValueNode_BLineCalcTangent is broken for Angle types.
+ * Additional fix for be able to build on Ubuntu 12.04. Patch thanks to Denis Washington (denis_w)
+ * Apply partially patch #3424218. Fix compiling issues with clang compiler. Thanks to Hisashi Todd Fujinaka
+ * Commented out unused variables. Additional compiler warning fixed
+
+ 0.63.04 (git tag: "synfig-0.63.04") - February 08, 2012 - Features, bug fixes.
+
+  * Fix crash when inserting an item on a generic empty dynamic list.
+  * Fix broken ffmpeg target that doesn't work for some non dot decimal points numeric locale settings.
+  * Fix several bugs and crashes related to dashed outlines
+  * Fix bug: http://www.pivotaltracker.com/story/show/23017929
+  * Fix bug http://www.pivotaltracker.com/story/show/23212095. If two rotations of 90 and -90 are consecutive the program crashes.
+  * Fix bug http://www.pivotaltracker.com/story/show/23342471.
+  * New interpolation type "Clamped"
+
+
+ 0.63.03 (git tag: "synfig-0.63.03") - December 05, 2011 - Features, bug fixes.
+
+  * Support to create Advanced Outlines with the Draw Tool.
+  * Fixed script to generate synfig API.
+  * Added two new parameters to the WidthPoint class. Lower Boundary and Upper Boundary
+    They define the lower and upper boundaries value of the widthpoint position
+    When placed at start and end of the BLine. By default lower = 0.0 and upper = 1.0
+    Lower boundary must be always smaller than Upper boundary.
+    As parameters they cannot be exported, converted or animated.
+  * Render improvements for Advanced Outlines:
+    With 'Fast' parameter disabled: 55% of reduction render time
+    With 'Fast' parameter enabled: 10% of reduction render time
+  * For Importer layer, even if file is physically impossible to open,
+    set the parameter with the passed file name. This would allow to load and
+    save Synfig's documents with paths for imported files badly adjusted but that user
+    doesn't want to modify.
+  * Fix for compatibility with libpng 1.5. Patch #3427945 by SpeckFleck.
+  * Fix bug in Time Loop Layer. Patch ID: #3414729 by Ray Frederikson
+  * Avoid crash when there is only one blinepoint and the bline is not looped on Advanced Outlines.
+  * Fix some old render artifacts and new ones due to render optimization on Advanced Outlines.
+  * Avoid crash when DIList is empty on Advanced Outlines.
+  * Insert Item smart is allowed now over empty lists.
+  * New Greek language. Thanks to kiolalis
+  * Update for all the languages.
+
+ 0.63.02 (git tag: "synfig-0.63.02") - September 28, 2011 - Improvement
+
+  * Add new parameter 'Fast' to Advanced Outline to allow render faster but less
+    accurate.
+
+ 0.63.01 (git tag: "synfig-0.63.01") - September 24, 2011 - Bug fixes, features
+
+  * Fix bug 3147736: avoid zero or negative value for supersample layer' size parameter.
+  * Allow use the Joined List Convert type to file name parameter of the Import Image layers.
+  * If tangents are zero and are merged, then consider them as split to make corners.
+  * Width points can be placed in a curve length basis using Homogeneous parameter.
+  * Interpolated width is from now on homogeneous. Fixes some render artifacts.
+  * Fixed some interpolation errors produced by bad WPList loop interpretation.
+  * Add new Dash Item List and support for dashed outlines.
+  * Linked to BLine has the option of be curve length based. On by default.
+  * New languages support: Persian, Slovakian, Dutch and Lituanian.
+  * Updated existing translations
+
+ 0.63.00 (git tag: "synfig-0.63.00") - June 5, 2011 - Bug fixes, major features
+
+  * Fix bug #3111032: Load and save settings must be locale independent.
+  * Added missing descriptions for several parameters.
+  * Fix bug: Avoid negative precision to produce always good strings from angle.
+  * Use º instead of DEG.
+  * Added new descriptions for linkable value node parameters.
+  * New advanced outline layer. Slidable variable width support and other features
+  * New languages support: Portuguese (Brazilian), Polish (Poland), Romanian and Norwegian
+  * Updates for Spanish, French and Italian.
+  * Rename Vertices parameter for Polygon layer.
+  * Fix bug #2175043: Crash when rendering in directory without write permission
+
+ 0.62.02 (git tag: "synfig-0.62.02") - November 13, 2010- Bug fixes, features
+
+  * Fix load and save palette feature.
+  * Code documentation. Not full yet.
+  * Adapt api.sh script to run as a cron job at tuxfamily servers.
+    Now API is updated at http://download.tuxfamily.org/synfig/api/index.html
+  * Rename secondary layer's Z column to "Icon" and make it not reorderable.
+    Make "Name" column resizable.
+  * Britain English translation. Robert Readman.
+  * Fix Bug #3029832 Time Offset parameter fails for multiple times imported files
+  * Simplified Chinese translation. Yu Chen
+  * New "By Layer Default" blend method.
+    Now some layers define its own blend method instead of Composite or
+    the selected by user. For example Shade->Behind
+  * Fix bug #2958077. Incorrect fps in ListImporter
+  * New Stroboscope Layer. Ray Fredesikson
+  * Added "Static" option for individual parameters.
+    If "Static" is on, then in animation mode it is no created any waypoint
+    when modified. Only valid for layer parameters and constant value nodes.
+  * Fix bug #3060560. Link two tangents and one is animated, the animated is not used.
+  * Smart linking bline tangents implementation. Now all tangents are yellow ducks.
+  * Move reverse manipulation code to Value Desc.
+    This allows recursive reverse manipulation for valuenodes which has
+    inverse manipulation implemented.
+  * Assume frames when no unit is provided in a time field. Apply feature request #2879693
+  * Spanish translation update.
+  * New Simplified Chinese translation. Yu Chen
+
+ 0.62.01 (git tag: "synfig-0.62.01") - May 31, 2010 - Bug fixes, features.
+
+  * Enable reverse manipulation to range value nodes. Fix bug in value node range.
+  * Resolve issues with libtool 1.5.26 and 2.2.4.
+  * Improve SVG import support. Better support for gradients and some bug fixes.
+  * Add code to make possible pass parameters to the renderers. Implementation for ffmpeg.
+  * New Italian and German translations.
+  * Automatic build script for linux system. Please report success of usage.
+  * New parameters for Motion Blur layer. Now allows linear and constant interpolation too.
+  * Updated Russian, French and Spanish translation
+
+
+
+ 0.62.00 (git tag: "synfig-0.62.00") - October 12, 2009 - Bug fixes, features.
+
+  * Migration to git repository.
+  * Bugs fixed: #2195749, #1968248, #2250533, #2116947, launchpad.net/ubuntu/#195447
+  * Bugs fixed: #1993098, #1730067, #2353248, #2037732, #2412072, #2458112
+  * Bugs fixed: #2502818.
+  * Improved messages for failed open file commands.
+  * Fixed crash when unsetting import layer filename after using PNG or JPEG importers.
+  * Improved the rendering of curve gradient layers near vertices with 0-length tangents.
+  * Fixed previous bug that produced bad render to the star layer.
+  * Enabled use of ffmpeg importer.
+  * Set four modules as essential: gradient, geometry, particle, freetype.
+  * Improved message when initialize synfig fails.
+  * New environment variables for options.
+  * Added support for alpha in paletted PNG files.
+  * New option: Scale New imported Images to Fit Canvas.
+  * Better errors when attempting to open a file that doesn't exist.
+  * Enabled Example module: Metaballs, Simple Circle, Filled Rectangle.
+  * New Value Nodes: Greyed, Power, And, Not, Compare.
+  * Added 'Loop' parameter to the Random Value Node.
+  * Reverse manipulation for Scale Value Nodes.
+  * Removed ancient trunk folder from svn repository.
+  * New Import SVG files module. Basic SVG import, see release notes.
+  * Disabled crop imported images by default.
+  * Updated translations.
+  * First time Russian translation.
+  * Several compiler warnings fixed.
+
+ 0.61.09 (SVN 2113) - October 21, 2008 - Bug fixes, features.
+
+  * Segment and Blines tangents are calculated more accurately
+  * Don't allow feather to be negative in any layer
+  * New Logarithm, Int String, Angle String, Joined List, Real String,
+    Time String, Dot Product, Gradient Colour, Vector X, Vector Y,
+    Vector Length, Vector Angle convert types
+  * Remove TENSION from TCB modes as it is the same as TEMPORAL TENSION
+  * Unless OpenEXR half mode is used, don't ask synfigstudio to depend on it
+  * Added "Link to Bline" feature
+  * Fix several bugs: plant layer, libavformat, time format FFf, libswscale
+    straight onto method, eyedrop tool and straight blend method for shape type layers
+  * Fix some compiler warnings
+  * Rename 'offset' and 'pos' to 'origin'
+  * Add French and Spanish translations
+  * Update the Windows builds to use OpenEXR 1.6.1
+  * The JPEG target can be switched on/off now
+  * Fix typos and other issues
+
+ 0.61.08 (SVN 1839) - March 3, 2008 - Bug fixes, features
+
+  * Update the website URL to synfig.org instead of synfig.com
+  * Synfig is now translatable using gettext
+  * Removed the 'bootstrap' script for building. Use autoreconf instead
+  * Fixed errors and warnings detected by a pre-release version of GCC 4.3
+  * New Duplicate layer. This is an experimental feature, but works well
+  * New reverse, offset parameters and misc fixes for the Plant layer.
+  * Fix a crash and use relative ducks with the Stretch layer
+  * Allow multibyte characters in the Text layer
+  * Misc fixes & features on Shade, Shape, Spherize, Star, Time Loop, Warp layers
+  * Add aTan2, Bline Width, Cos, Duplicate, From Integer, Random,
+    Reciprocal, Reverse Tangent, Step, Switch, Time Loop convert types
+  * Add and Subtract convert types now work with gradients
+  * Security fixes for ffmpeg/dv/imagemagick targets/importers (except on Win32)
+  * Add new magick++ target that does better gif rendering with libmagick++ 7.3
+  * Misc fixes for the rendering targets, blend methods and canvases
+  * Allow importing of lipsynced voice animations from Papagayo
+  * Various changes to related to SIF file compatibility
+  * Fix typos, several crashes and other issues
+
+ 0.61.07 (SVN 878) - October 10, 2007 - Bug fixes
+
+  * Fix importing on amd64 (#1692825)
+  * Fixes for the PasteCanvas layer (#1356449)
+  * Clean up Layer menu and displayed layer names
+  * Allow exported canvases to be used in more than one place within a canvas (#1785296)
+  * Fix, extend, and enable the 'XOR Pattern' layer
+  * Fix and extend the 'Plant' layer (#1790903)
+  * Turn on plant layer (gunsmoke) in macwolfen.sifz example
+  * Use 'fast gaussian' rather than 'gaussian' for blurs in pirates.sifz - it's faster!
+  * Fix and enable the 'Timed Swap' valuenode conversion
+  * Extend the 'Linear' valuenode conversion to work with colors and integers.
+  * Enable basic motion blur display at all qualities
+  * Fix an artifact on the curve gradient layer (#1792063, r663)
+  * Add the 'Range', 'Repeat Gradient', 'Add', 'Exponent' valuenode conversions
+  * Add the 'BLine Vector', and 'BLine Tangent' valuenode conversions (#1781903)
+  * Fix problems with valuenode conversion  (#1794374, #1795913, #1795922, #1796068, #1797488)
+  * Allow gradients to be animated (#1568818, #1795802)
+  * Stop TCB angle waypoints changing to type Linear on load (#1778930)
+  * Use compression when saving to files with .sifz extension
+  * Compressed example .sif files to .sifz to save space
+  * Fixed Motion Blur layer (#1800783)
+  * Allow building studio with gcc -O2 (#1509627)
+  * Allow encapsulated layers to animate their z-depth, even when time-shifted (#1806852)
+  * Fixed the Radial Blur layer when zooming in on the canvas (#1807709)
+  * Fix several other bugs and crashes
+
+ 0.61.06 (SVN 536) - June 20, 2007 - Bug fixes
+
+  * Add fontconfig support
+  * Fix amd64 issue
+  * Fix ffmpeg, gif, libav targets
+  * Include more target modules in the Win32 package
+  * Fix some crashes in synfigstudio
+  * Fix some render artifacts
+  * Fix some doxygen warnings
+  * Some MacOS fixes
+  * Misc bug fixes
+  * Fix random number generation for 64 bit CPUs (#1698604)
+  * Add parameter 'fast' to curve gradients to choose fast or accurate rendering (#1672033)
+  * Add new odd/even winding style for regions
+
+ 0.61.05 (SVN 126) - February 27, 2005 - Misc fixes
+
+  * Use system libltdl when available (#1423944)
+  * Update doxygen config file (#1402909)
+  * Fix fontconfig/xft FTBFS
+  * Misc fix (#1414370)
+
+ 0.61.04 (SVN 102) - January 10, 2005 - Misc fixes
+
+  * Check for imagemagick at build time
+  * Clarify mod_openexr copyright
+  * Fix mod_openexr building
+  * Don't add 'Copyright Voria' to PNG output
+  * Don't write localised numbers when generating SIF files
+
+ 0.61.03 - December 8, 2005 - Copyright update
+
+  * Update more old copyright and licence notices
+  * Remove broken walk example
+  * Misc code fixes
+
+ 0.61.02 - November 26, 2005 - Misc fixes
+
+  * Small cygwin/optimization/code fixes
+
+ 0.61.01 - November 3, 2005 - Copyright update
+
+  * Update old copyright and licence notices
+  * Fix some GCC 4.0 build issues
+  * Include errno.h where needed
+  * Add ./configure options for debug, warnings, optimisation, profiling
+  * Add about_dialog.sif as another example
+  * Remove SFAutomaton.ttf due to licence issues
+  * Fix BMP rendering target
+
+ 0.61.00-39 - November 1, 2005 - Developer preview
+
+  * First public release!
+
+------------------------------------
+
+2005-11-28	Robert Quattlebaum	<darco@deepdarc.com>
+	* src/modules/lyr_std/sphere_distort.cpp/h: Clarified namespace issues 
+2005-11-08	Robert Quattlebaum	<darco@deepdarc.com>
+	* src/modules/lyr_std/stretch.cpp/h: Clarified namespace issues 
+2005-11-03	Robert Quattlebaum	<darco@deepdarc.com>
+	* src/synfig/savecanvas.cpp: added #include <sys/errorno.h>
+	* src/synfig/value.cpp: Various GCC 4.0 fixes
+	* src/modules/mod_bmp/trgt_bmp.cpp: The BMP target was broken. It's now fixed.
+	* examples: Removed SFAutomaton font due to licensing issues.
+	* All: Updated copyright notice to reflect new license
+
+2004-04-07 (darco): Foldy... Powers?
+2004-03-30 (darco): Fix for weird keyframe problem
+2004-03-24 (darco): Speed improvements for both the pastecanvas layer and the checkerboard layer
+2004-03-15 (darco): "Noise" layer split into two different layers: NoiseGradient, and NoiseDistort, which can be found in the Gradients and Distortions categories respectively.
+2004-03-05 (darco): New stuff tangents should interpolate using polar coordinates. Awesome.
+2004-03-05 (darco): Added "Bevel" Layer
+2004-03-05 (darco): Added "Shade" Layer
+2004-03-04 (darco): Fixed problem with tangents not animating correctly
+2004-02-25 (darco): Added the "time_offset" parameter to the Paste Canvas layer
+2004-02-20 (darco): Significantly improved the BLine (which will be later called "outline") layer
+2004-02-16 (darco): Added some under-the-hood-updates
+2004-02-16 (darco): Improved renddesc editing slightly
+2004-02-16 (darco): fixed the hit checks for the gradient layers. You can now more easily click on layers under them
+2004-02-11 (darco): fixed a memory leak in the freetype layer
+2004-02-11 (darco): fixed the onto blend method
+2004-02-10 (adruab): Added shape specific blurs
+2004-01-23 (darco) : Fixed minor loop problem
+2004-01-23 (darco) : Added "Cosine" falloff to circle. (should be better than sigmond)
+2004-01-21 (darco) : Support for paletted PNG files added
+2004-01-15 (darco) : BLine Layer: Added "width" parameter, removed "width_list" parameter
+2004-01-13 (darco) : Font layer largely re-written--now supports multiple lines. Also much more consistent.
+2004-01-09 (darco) : fixed all the loose ends with the rectangle layer
+2004-01-09 (darco) : Added expand parameter to rectangle layer
+2004-01-09 (darco) : Adjusted the rectangle layer -- you can now invert it
+2004-01-09 (darco) : You can now duplicate inline canvases
+2004-01-05 (darco) : Both ends of a BLine can now have round edges (which are now on by default)
+2004-01-05 (darco) : Increased threshold for cusp cut-off of tangents are too sharp
+2003-12-29 (darco) : Added support for sharp cusp points (on by default now)
+2003-12-24 (darco) : Adjusted Copyright Notice
+2003-12-24 (darco) : Improved the horizontal placement consistency of the Text layer.
+2003-12-24 (darco) : Fix for obscure bug in scale valuenode that would cause a failure to load a saved file
+2003-11-25 (darco) : Improved the Text layer again. *sigh*
+2003-11-20 (darco) : Improved the consistency of the Text layer again. :P
+2003-11-18 (darco) : Improved the consistency of the Text layer. You should be able to use it without worrying about the layout going weird anymore.
+2003-11-12 (darco) : Added "--dpi", "--dpi-x", and "--dpi-y" arguments to the SINFG command line tool.  these allow you to change the DPI of what you are rendering.
+2003-11-10 (darco) : Fixed odd animation behavior
+2003-11-10 (darco) : Fixed a bug in the PasteCanvas layer where mouse clicks wouldn't match up if the "origin" was changed from 0,0.
+2003-11-04 (darco) : Inserting points into a polygon is now smarter -- puts the new point between the original two
+2003-10-28 (darco) : Added support for physical dimension information in file format (xres/yres)
+2003-10-20 (adruab) : Added support for video encoding through use of FFMPEG (avi,mpg,asf,rm,wmv)
+2003-10-07 (darco) : Changed dynamic list/bline pad the index with zeros (001, 002, etc.)
+2003-10-06 (darco) : Added Red-Blue color-corection adjustment to gamma
+2003-10-06 (darco) : Added "displacement" mode for noise
+2003-10-06 (darco) : The "scale" valuenode will now NOT scale the alpha channel of a color. (Otherwise, it's kinda useless)
+2003-10-05 (darco) : The noise layer is now... Animated!
+2003-10-05 (darco) : Added new layer... Noise!
+2003-10-04 (darco) : You should now be able to create polygons layers without crashing. (Regions and BLines are another story though...)
+2003-10-03 (darco) : Implemented layer descriptions
+2003-09-30 (darco) : Fixed bug where BLine would "warp" when introducing new vertices.
+2003-09-30 (darco) : Editing stuff while the work area refreshes in SINFG Studio should now be smoother
+2003-09-24 (darco) : Adjusted the hit check in PasteCanvas layer to support inline canvases
+2003-09-23 (darco) : ConicalGradient had incorrect angle, it was 90 degrees off. Fixed.
+2003-09-17 (darco) : Fixed bewildering "wobble" animation bug
+2003-09-02 (darco) : Added antialiasing to the gradient layers
+2003-09-01 (darco) : Added Twirl Layer
+2003-09-01 (darco) : Added Star Layer
+2003-08-31 (darco) : Negative values are now clamped to the black point rather than having some kind of visualization. 
+2003-08-13 (darco) : Fixed some gamma issues on the PNG and ImageMagick image importers
+2003-08-13 (darco) : Again, Improved support for clickable layers
+2003-08-12 (darco) : Improved support for clickable layers
+2003-08-06 (darco) : Added accelerated renderer for all gradient layers, they are now much faster. (Needs adaptive supersampling though...)
+2003-07-31 (darco) : Added support for black level adjustment in gamma correction
+2003-07-30 (darco) : Added support for gamma correction
+2003-07-30 (darco) : Adjusted the mandelbrot layer to support gradients
+2003-07-29 (darco) : Improved blend methods: Brighten, Darken
+2003-07-29 (darco) : Added new blend methods: Screen, Overlay, and Difference
+2003-07-24 (darco) : Added gradients!!!
+2003-07-16 (darco) : Tiled Renderer now implemented
+2003-07-14 (darco) : TCB controls now implemented
+2003-05-05 (darco) : Dynamic List entries can now have multiple start times and end times
+2003-05-05 (darco) : Phasing out Timed Stamp Value Node, because the animated value node is now capable.
+2003-05-05 (darco) : The Animated Value Node can now use exported values in waypoints.
+2003-04-23 (darco) : Added "stretch" layer. (Allows distortions to things like circles)
+2003-04-18 (darco) : Added "exposure" parameter to color correct layer
+2003-04-17 (darco) : Added native support for JPEG files
+2003-04-15 (darco) : The parametric renderer is now multi-threaded, meaning it can take advantage of multiple processors. Doesn't work in Win32.
+2003-04-14 (darco) : Added "ColorCorrect" layer
+2003-04-14 (darco) : Added "bailout" parameter to Mandelbrot and Julia layers. Use larger values to improve smoothing.
+2003-04-14 (darco) : Improved clamp layer
+2003-04-14 (darco) : Fix a bug with the "Color" blend method
+2003-04-11 (darco) : Added "XORPattern" layer
+2003-04-11 (darco) : Added "clamp" layer for clamping colors
+2003-04-10 (darco) : Fixed a bug with the "smooth outside" parameter of the Julia and Mandelbrot layers
+2003-04-10 (darco) : Major under-the-hood changes
+2003-04-07 (darco) : Implemented support for inline (nested) canvases in parameters
+2003-04-07 (darco) : Removed "time blur" option from "blur" layer
+2003-04-07 (darco) : Created "motion blur" layer
+2003-04-04 (darco) : Added layer "julia"
+2003-04-04 (darco) : Added layer "inside out"
+2003-04-03 (darco) : Fixed some minor issues with the polygon layer
+2003-04-03 (darco) : Improvements to the way that time is handed
+2003-04-02 (darco) : Added "offset" parameter to polygon layer
+
+2003-04-01 (darco) : Added a new value type, "Time"
+2003-04-01 (darco) : Fixed a bug where values were not getting clamped
+2003-03-31 (darco) : Tons of under-the-hood changes
+2003-03-27 (darco) : Added "-c" argument to sinfg tool.
+2003-03-26 (darco) : Added "antialias" attribute to <canvas> in SIF file format.
+2003-03-26 (darco) : Fixed bug #0000010 ("DataNode_Subtract always reverts 'scalar' to constant after save/load")
+2003-03-25 (darco) : Added support for linking to DataNodes/Canvases in other Compositions.
+2003-03-24 (darco) : Added support for linking to DataNodes in different Canvases.
+
+2003-03-23 (darco) : Fixed a small bug in circle layer that caused inconsistent results when the feather was set to zero and the parametric renderer used.
+2003-03-23 (darco) : Added "zoom" parameter to PasteCanvas layer
+
+2003-03-22 (darco) : Fixed color-order bug in ImageMagick importer
+2003-03-22 (darco) : Fixed a layer-cloning bug (For example, attempting to clone the Import layer would crash SINFG Studio)
+
+2003-03-20 (darco) : Fixed bug where numbers would be appended to filename when using bitmap target
+2003-03-20 (darco) : PPM Module wasn't being loaded. Fixed.
+2003-03-20 (darco) : Version Increment
+
+2003-03-19 (darco) : Added BMP importer
+2003-03-19 (darco) : Added PNG importer
+
+2003-03-19 (darco) : Added "--importers" option to sinfg tool, for listing loaded importers
+
+2003-03-17 (darco) : Slight optimization to Region layer
+2003-03-17 (darco) : Slight optimization to BLine layer
+
+2003-03-04 (darco) : Improved some layers to improve responsiveness during rendering.
+2003-03-04 (darco) : Added rotate layer.
+2003-03-04 (darco) : Fully implemented the "angle" type in loading and saving.
+
+2003-03-01 (darco) : Changed the default zoom amount from 1.0 to 0.0

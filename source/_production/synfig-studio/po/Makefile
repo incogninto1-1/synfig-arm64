@@ -1,0 +1,742 @@
+# Makefile for program source directory in GNU NLS utilities package.
+# Copyright (C) 1995, 1996, 1997 by Ulrich Drepper <drepper@gnu.ai.mit.edu>
+# Copyright (C) 2004-2008 Rodney Dawes <dobey.pwns@gmail.com>
+#
+# This file may be copied and used freely without restrictions.  It may
+# be used in projects which are not available under a GNU Public License,
+# but which still want to provide support for the GNU gettext functionality.
+#
+# - Modified by Owen Taylor <otaylor@redhat.com> to use GETTEXT_PACKAGE
+#   instead of PACKAGE and to look for po2tbl in ./ not in intl/
+#
+# - Modified by jacob berkman <jacob@ximian.com> to install
+#   Makefile.in.in and po2tbl.sed.in for use with glib-gettextize
+#
+# - Modified by Rodney Dawes <dobey.pwns@gmail.com> for use with intltool
+#
+# We have the following line for use by intltoolize:
+# INTLTOOL_MAKEFILE
+
+GETTEXT_PACKAGE = synfigstudio
+PACKAGE = synfigstudio
+VERSION = 1.5.1
+
+SHELL = /bin/sh
+
+srcdir = /home/incogninto1-1/synfig/synfig-studio/po
+top_srcdir = /home/incogninto1-1/synfig/synfig-studio
+top_builddir = ..
+VPATH = /home/incogninto1-1/synfig/synfig-studio/po
+
+prefix = /home/incogninto1-1/synfig/_production/build
+exec_prefix = ${prefix}
+datadir = ${datarootdir}
+datarootdir = ${prefix}/share
+libdir = ${exec_prefix}/lib
+localedir = ${datarootdir}/locale
+subdir = po
+install_sh = ${SHELL} /home/incogninto1-1/synfig/synfig-studio/config/install-sh
+# Automake >= 1.8 provides /usr/bin/mkdir -p.
+# Until it can be supposed, use the safe fallback:
+mkdir_p = $(install_sh) -d
+
+INSTALL = /usr/bin/install -c
+INSTALL_DATA = ${INSTALL} -m 644
+
+GMSGFMT = /usr/bin/msgfmt
+MSGFMT = /usr/bin/msgfmt
+XGETTEXT = /usr/bin/xgettext
+INTLTOOL_UPDATE = /usr/bin/intltool-update
+INTLTOOL_EXTRACT = /usr/bin/intltool-extract
+MSGMERGE = INTLTOOL_EXTRACT="$(INTLTOOL_EXTRACT)" XGETTEXT="$(XGETTEXT)" srcdir=$(srcdir) $(INTLTOOL_UPDATE) --gettext-package $(GETTEXT_PACKAGE) --dist
+GENPOT   = INTLTOOL_EXTRACT="$(INTLTOOL_EXTRACT)" XGETTEXT="$(XGETTEXT)" srcdir=$(srcdir) $(INTLTOOL_UPDATE) --gettext-package $(GETTEXT_PACKAGE) --pot
+
+ALL_LINGUAS = 
+
+PO_LINGUAS=$(shell if test -r $(srcdir)/LINGUAS; then grep -v "^\#" $(srcdir)/LINGUAS; else echo "$(ALL_LINGUAS)"; fi)
+
+USER_LINGUAS=$(shell if test -n "$(LINGUAS)"; then LLINGUAS="$(LINGUAS)"; ALINGUAS="$(ALL_LINGUAS)"; for lang in $$LLINGUAS; do if test -n "`grep \^$$lang$$ $(srcdir)/LINGUAS 2>/dev/null`" -o -n "`echo $$ALINGUAS|tr ' ' '\n'|grep \^$$lang$$`"; then printf "$$lang "; fi; done; fi)
+
+USE_LINGUAS=$(shell if test -n "$(USER_LINGUAS)" -o -n "$(LINGUAS)"; then LLINGUAS="$(USER_LINGUAS)"; else if test -n "$(PO_LINGUAS)"; then LLINGUAS="$(PO_LINGUAS)"; else LLINGUAS="$(ALL_LINGUAS)"; fi; fi; for lang in $$LLINGUAS; do printf "$$lang "; done)
+
+POFILES=$(shell LINGUAS="$(PO_LINGUAS)"; for lang in $$LINGUAS; do printf "$$lang.po "; done)
+
+DISTFILES = Makefile.in.in POTFILES.in $(POFILES)
+EXTRA_DISTFILES = ChangeLog POTFILES.skip Makevars LINGUAS
+
+POTFILES = \
+	/home/incogninto1-1/synfig/synfig-studio/org.synfig.SynfigStudio.desktop.in \
+	/home/incogninto1-1/synfig/synfig-studio/org.synfig.SynfigStudio.appdata.xml.in \
+	/home/incogninto1-1/synfig/synfig-studio/synfigstudio-thumbnailer.schemas.in \
+	/home/incogninto1-1/synfig/synfig-studio/synfigstudio.keys.in \
+	/home/incogninto1-1/synfig/synfig-studio/plugins/add-skeleton-simple/plugin.xml.in \
+	/home/incogninto1-1/synfig/synfig-studio/plugins/lottie-exporter/plugin.xml.in \
+	/home/incogninto1-1/synfig/synfig-studio/plugins/view-unhide-all-layers/plugin.xml.in \
+	/home/incogninto1-1/synfig/synfig-studio/src/brushlib/brushsettings.py \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/actionmanagers/groupactionmanager.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/actionmanagers/groupactionmanager.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/actionmanagers/keyframeactionmanager.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/actionmanagers/keyframeactionmanager.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/actionmanagers/layeractionmanager.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/actionmanagers/layeractionmanager.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/cellrenderer/cellrenderer_gradient.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/cellrenderer/cellrenderer_gradient.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/cellrenderer/cellrenderer_time.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/cellrenderer/cellrenderer_time.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/cellrenderer/cellrenderer_timetrack.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/cellrenderer/cellrenderer_timetrack.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/cellrenderer/cellrenderer_value.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/cellrenderer/cellrenderer_value.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/dialogs/about.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/dialogs/about.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/dialogs/canvasoptions.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/dialogs/canvasoptions.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/dialogs/canvasproperties.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/dialogs/canvasproperties.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/dialogs/dialog_color.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/dialogs/dialog_color.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/dialogs/dialog_ffmpegparam.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/dialogs/dialog_gradient.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/dialogs/dialog_gradient.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/dialogs/dialog_input.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/dialogs/dialog_keyframe.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/dialogs/dialog_keyframe.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/dialogs/dialog_preview.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/dialogs/dialog_preview.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/dialogs/dialog_setup.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/dialogs/dialog_setup.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/dialogs/dialog_soundselect.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/dialogs/dialog_soundselect.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/dialogs/dialog_spritesheetparam.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/dialogs/dialog_targetparam.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/dialogs/dialog_targetparam.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/dialogs/dialog_template.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/dialogs/dialog_template.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/dialogs/dialog_waypoint.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/dialogs/dialog_waypoint.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/dialogs/dialog_workspaces.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/dialogs/dialog_workspaces.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/dialogs/vectorizersettings.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/dials/framedial.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/dials/framedial.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/dials/jackdial.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/dials/keyframedial.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/dials/keyframedial.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/dials/resolutiondial.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/dials/resolutiondial.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/dials/toggleducksdial.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/dials/toggleducksdial.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/dials/zoomdial.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/dials/zoomdial.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/docks/dialog_tooloptions.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/docks/dialog_tooloptions.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/docks/dock_canvases.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/docks/dock_canvases.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/docks/dock_canvasspecific.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/docks/dock_canvasspecific.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/docks/dock_children.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/docks/dock_children.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/docks/dock_curves.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/docks/dock_curves.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/docks/dock_history.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/docks/dock_history.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/docks/dock_info.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/docks/dock_info.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/docks/dock_keyframes.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/docks/dock_keyframes.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/docks/dock_layergroups.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/docks/dock_layergroups.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/docks/dock_layers.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/docks/dock_layers.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/docks/dock_metadata.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/docks/dock_metadata.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/docks/dock_navigator.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/docks/dock_navigator.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/docks/dock_params.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/docks/dock_params.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/docks/dock_soundwave.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/docks/dock_soundwave.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/docks/dock_timetrack.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/docks/dock_timetrack.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/docks/dock_timetrack2.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/docks/dock_toolbox.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/docks/dock_toolbox.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/docks/dockable.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/docks/dockable.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/docks/dockbook.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/docks/dockbook.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/docks/dockdialog.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/docks/dockdialog.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/docks/dockdroparea.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/docks/dockdroparea.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/docks/dockmanager.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/docks/dockmanager.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/modules/mod_palette/dock_palbrowse.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/modules/mod_palette/dock_palbrowse.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/modules/mod_palette/dock_paledit.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/modules/mod_palette/dock_paledit.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/modules/mod_palette/mod_palette.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/modules/mod_palette/mod_palette.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/modules/module.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/modules/module.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/states/state_bline.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/states/state_bline.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/states/state_bone.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/states/state_bone.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/states/state_brush.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/states/state_brush.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/states/state_circle.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/states/state_circle.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/states/state_draw.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/states/state_draw.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/states/state_eyedrop.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/states/state_eyedrop.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/states/state_fill.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/states/state_fill.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/states/state_gradient.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/states/state_gradient.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/states/state_lasso.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/states/state_lasso.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/states/state_mirror.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/states/state_mirror.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/states/state_normal.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/states/state_normal.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/states/state_polygon.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/states/state_polygon.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/states/state_rectangle.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/states/state_rectangle.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/states/state_rotate.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/states/state_rotate.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/states/state_scale.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/states/state_scale.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/states/state_sketch.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/states/state_sketch.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/states/state_smoothmove.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/states/state_smoothmove.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/states/state_star.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/states/state_star.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/states/state_stroke.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/states/state_stroke.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/states/state_text.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/states/state_text.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/states/state_width.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/states/state_width.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/states/state_zoom.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/states/state_zoom.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/trees/canvastreestore.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/trees/canvastreestore.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/trees/childrentree.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/trees/childrentree.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/trees/childrentreestore.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/trees/childrentreestore.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/trees/historytreestore.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/trees/historytreestore.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/trees/keyframetree.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/trees/keyframetree.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/trees/keyframetreestore.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/trees/keyframetreestore.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/trees/layergrouptree.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/trees/layergrouptree.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/trees/layergrouptreestore.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/trees/layergrouptreestore.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/trees/layerparamtreestore.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/trees/layerparamtreestore.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/trees/layertree.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/trees/layertree.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/trees/layertreestore.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/trees/layertreestore.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/trees/metadatatree.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/trees/metadatatreestore.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/trees/metadatatreestore.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/widgets/widget_bonechooser.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/widgets/widget_canvaschooser.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/widgets/widget_canvaschooser.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/widgets/widget_color.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/widgets/widget_color.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/widgets/widget_coloredit.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/widgets/widget_coloredit.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/widgets/widget_compselect.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/widgets/widget_compselect.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/widgets/widget_curves.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/widgets/widget_curves.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/widgets/widget_defaults.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/widgets/widget_defaults.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/widgets/widget_distance.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/widgets/widget_distance.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/widgets/widget_enum.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/widgets/widget_enum.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/widgets/widget_filename.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/widgets/widget_filename.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/widgets/widget_fontfamily.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/widgets/widget_fontfamily.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/widgets/widget_gradient.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/widgets/widget_gradient.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/widgets/widget_interpolation.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/widgets/widget_interpolation.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/widgets/widget_keyframe_list.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/widgets/widget_keyframe_list.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/widgets/widget_link.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/widgets/widget_soundwave.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/widgets/widget_soundwave.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/widgets/widget_sublayer.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/widgets/widget_sublayer.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/widgets/widget_time.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/widgets/widget_time.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/widgets/widget_timeslider.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/widgets/widget_timeslider.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/widgets/widget_timetrack.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/widgets/widget_value.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/widgets/widget_value.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/widgets/widget_vector.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/widgets/widget_vector.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/widgets/widget_waypoint.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/widgets/widget_waypoint.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/widgets/widget_waypointmodel.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/widgets/widget_waypointmodel.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/workarearenderer/renderer_background.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/workarearenderer/renderer_background.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/workarearenderer/renderer_bbox.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/workarearenderer/renderer_bbox.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/workarearenderer/renderer_bonedeformarea.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/workarearenderer/renderer_bonedeformarea.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/workarearenderer/renderer_bonesetup.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/workarearenderer/renderer_canvas.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/workarearenderer/renderer_canvas.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/workarearenderer/renderer_dragbox.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/workarearenderer/renderer_dragbox.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/workarearenderer/renderer_ducks.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/workarearenderer/renderer_ducks.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/workarearenderer/renderer_grid.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/workarearenderer/renderer_grid.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/workarearenderer/renderer_guides.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/workarearenderer/renderer_guides.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/workarearenderer/renderer_timecode.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/workarearenderer/renderer_timecode.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/workarearenderer/workarearenderer.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/workarearenderer/workarearenderer.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/workspacehandler.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/app.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/app.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/asyncrenderer.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/asyncrenderer.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/autorecover.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/autorecover.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/canvasview.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/canvasview.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/devicetracker.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/devicetracker.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/dialogsettings.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/dialogsettings.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/duck.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/duck.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/duckmatic.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/duckmatic.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/ducktransform_matrix.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/ducktransform_origin.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/ducktransform_rotate.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/ducktransform_scale.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/ducktransform_translate.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/event_keyboard.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/event_layerclick.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/event_mouse.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/eventkey.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/iconcontroller.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/iconcontroller.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/instance.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/instance.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/keymapsettings.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/keymapsettings.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/main.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/mainwindow.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/mainwindow.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/onemoment.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/onemoment.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/pluginmanager.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/preview.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/preview.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/renddesc.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/renddesc.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/render.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/render.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/smach.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/splash.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/splash.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/statemanager.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/statemanager.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/workarea.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/workarea.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/workarearenderer/workarearenderer.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/workarearenderer/workarearenderer.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/action.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/action.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/action_param.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/action_param.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/activepointadd.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/activepointadd.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/activepointremove.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/activepointremove.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/activepointset.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/activepointset.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/activepointsetoff.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/activepointsetoff.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/activepointseton.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/activepointseton.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/activepointsetsmart.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/activepointsetsmart.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/activepointsimpleadd.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/activepointsimpleadd.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/blinepointtangentmerge.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/blinepointtangentmerge.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/blinepointtangentsplit.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/blinepointtangentsplit.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/canvasadd.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/canvasadd.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/canvasdescriptionset.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/canvasdescriptionset.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/canvasidset.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/canvasidset.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/canvasmetadataerase.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/canvasmetadataset.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/canvasnameset.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/canvasnameset.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/canvasremove.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/canvasremove.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/canvasrenddescset.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/canvasrenddescset.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/colorset.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/colorset.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/editmodeset.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/editmodeset.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/gradientset.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/gradientset.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/groupaddlayers.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/groupaddlayers.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/groupremove.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/groupremove.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/groupremovelayers.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/groupremovelayers.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/grouprename.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/grouprename.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/keyframeadd.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/keyframeadd.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/keyframeduplicate.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/keyframeduplicate.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/keyframeremove.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/keyframeremove.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/keyframeset.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/keyframeset.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/keyframesetdelta.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/keyframesetdelta.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/keyframetoggl.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/keyframewaypointset.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/keyframewaypointset.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/layeractivate.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/layeractivate.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/layeradd.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/layeradd.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/layeraddframe.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/layeraddframe.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/layercopy.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/layercopy.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/layerduplicate.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/layerduplicate.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/layerembed.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/layerembed.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/layerencapsulate.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/layerencapsulate.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/layerencapsulatefilter.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/layerencapsulateswitch.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/layerencapsulateswitch.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/layerextract.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/layerextract.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/layerfit.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/layerfit.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/layerlower.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/layerlower.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/layermakebline.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/layermakebline.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/layermove.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/layermove.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/layerpaint.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/layerpaint.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/layerparamconnect.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/layerparamconnect.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/layerparamdisconnect.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/layerparamdisconnect.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/layerparamset.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/layerparamset.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/layerparamsetstatic.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/layerparamsetstatic.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/layerparamunsetstatic.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/layerparamunsetstatic.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/layerraise.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/layerraise.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/layerremove.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/layerremove.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/layerresetpose.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/layersetdesc.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/layersetdesc.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/layersetexcludefromrendering.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/layerzdepthrangeset.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/timepointscopy.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/timepointscopy.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/timepointsdelete.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/timepointsdelete.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/timepointsmove.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/timepointsmove.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/valuedescbake.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/valuedescblinelink.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/valuedescblinelink.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/valuedescbonelink.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/valuedescbonesetparent.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/valuedescconnect.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/valuedescconnect.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/valuedescconvert.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/valuedescconvert.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/valuedesccreatechildbone.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/valuedescdisconnect.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/valuedescdisconnect.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/valuedescexport.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/valuedescexport.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/valuedesclink.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/valuedesclink.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/valuedescremovesmart.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/valuedescremovesmart.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/valuedescresetpose.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/valuedescset.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/valuedescset.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/valuedescsetinterpolation.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/valuedescskeletonlink.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/valuedescskeletonlink.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/valuenodeadd.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/valuenodeadd.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/valuenodeconstset.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/valuenodeconstset.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/valuenodeconstsetstatic.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/valuenodeconstsetstatic.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/valuenodeconstunsetstatic.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/valuenodeconstunsetstatic.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/valuenodedynamiclistinsert.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/valuenodedynamiclistinsert.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/valuenodedynamiclistinsertsmart.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/valuenodedynamiclistinsertsmart.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/valuenodedynamiclistloop.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/valuenodedynamiclistloop.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/valuenodedynamiclistremove.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/valuenodedynamiclistremove.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/valuenodedynamiclistremovesmart.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/valuenodedynamiclistremovesmart.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/valuenodedynamiclistrotateorder.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/valuenodedynamiclistrotateorder.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/valuenodedynamiclistunloop.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/valuenodedynamiclistunloop.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/valuenodelinkconnect.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/valuenodelinkconnect.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/valuenodelinkdisconnect.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/valuenodelinkdisconnect.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/valuenoderemove.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/valuenoderemove.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/valuenoderename.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/valuenoderename.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/valuenodereplace.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/valuenodereplace.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/valuenodesetactivebone.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/valuenodestaticlistinsert.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/valuenodestaticlistinsertsmart.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/valuenodestaticlistloop.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/valuenodestaticlistremove.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/valuenodestaticlistremovesmart.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/valuenodestaticlistrotateorder.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/valuenodestaticlistunloop.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/vectorization.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/waypointadd.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/waypointadd.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/waypointconnect.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/waypointdisconnect.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/waypointremove.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/waypointremove.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/waypointset.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/waypointset.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/waypointsetsmart.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/waypointsetsmart.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/waypointsimpleadd.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/actions/waypointsimpleadd.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/action_system.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/action_system.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/blineconvert.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/blineconvert.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/canvasinterface.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/canvasinterface.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/editmode.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/inputdevice.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/inputdevice.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/instance.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/instance.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/main.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/main.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/selectionmanager.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/settings.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/settings.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/timegather.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/timegather.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/uimanager.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/uimanager.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/value_desc.cpp \
+	/home/incogninto1-1/synfig/synfig-studio/src/synfigapp/value_desc.h \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/resources/ui/canvas_options.glade \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/resources/ui/dialog_workspaces.glade \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/resources/ui/preview_options.glade \
+	/home/incogninto1-1/synfig/synfig-studio/src/gui/resources/ui/shortcuts_window.glade
+
+CATALOGS=$(shell LINGUAS="$(USE_LINGUAS)"; for lang in $$LINGUAS; do printf "$$lang.gmo "; done)
+
+.SUFFIXES:
+.SUFFIXES: .po .pox .gmo .mo .msg .cat
+
+AM_DEFAULT_VERBOSITY = 0
+INTLTOOL_V_MSGFMT = $(INTLTOOL__v_MSGFMT_$(V))
+INTLTOOL__v_MSGFMT_= $(INTLTOOL__v_MSGFMT_$(AM_DEFAULT_VERBOSITY))
+INTLTOOL__v_MSGFMT_0 = @echo "  MSGFMT" $@;
+
+.po.pox:
+	$(MAKE) $(GETTEXT_PACKAGE).pot
+	$(MSGMERGE) $* $(GETTEXT_PACKAGE).pot -o $*.pox
+
+.po.mo:
+	$(INTLTOOL_V_MSGFMT)$(MSGFMT) -o $@ $<
+
+.po.gmo:
+	$(INTLTOOL_V_MSGFMT)file=`echo $* | sed 's,.*/,,'`.gmo \
+	  && rm -f $$file && $(GMSGFMT) -o $$file $<
+
+.po.cat:
+	sed -f ../intl/po2msg.sed < $< > $*.msg \
+	  && rm -f $@ && gencat $@ $*.msg
+
+
+all: all-yes
+
+all-yes: $(CATALOGS)
+all-no:
+
+$(GETTEXT_PACKAGE).pot: $(POTFILES)
+	$(GENPOT)
+
+install: install-data
+install-data: install-data-yes
+install-data-no: all
+install-data-yes: all
+	linguas="$(USE_LINGUAS)"; \
+	for lang in $$linguas; do \
+	  dir=$(DESTDIR)$(localedir)/$$lang/LC_MESSAGES; \
+	  $(mkdir_p) $$dir; \
+	  if test -r $$lang.gmo; then \
+	    $(INSTALL_DATA) $$lang.gmo $$dir/$(GETTEXT_PACKAGE).mo; \
+	    echo "installing $$lang.gmo as $$dir/$(GETTEXT_PACKAGE).mo"; \
+	  else \
+	    $(INSTALL_DATA) $(srcdir)/$$lang.gmo $$dir/$(GETTEXT_PACKAGE).mo; \
+	    echo "installing $(srcdir)/$$lang.gmo as" \
+		 "$$dir/$(GETTEXT_PACKAGE).mo"; \
+	  fi; \
+	  if test -r $$lang.gmo.m; then \
+	    $(INSTALL_DATA) $$lang.gmo.m $$dir/$(GETTEXT_PACKAGE).mo.m; \
+	    echo "installing $$lang.gmo.m as $$dir/$(GETTEXT_PACKAGE).mo.m"; \
+	  else \
+	    if test -r $(srcdir)/$$lang.gmo.m ; then \
+	      $(INSTALL_DATA) $(srcdir)/$$lang.gmo.m \
+		$$dir/$(GETTEXT_PACKAGE).mo.m; \
+	      echo "installing $(srcdir)/$$lang.gmo.m as" \
+		   "$$dir/$(GETTEXT_PACKAGE).mo.m"; \
+	    else \
+	      true; \
+	    fi; \
+	  fi; \
+	done
+
+# Empty stubs to satisfy archaic automake needs
+dvi info ctags tags CTAGS TAGS ID:
+
+# Define this as empty until I found a useful application.
+install-exec installcheck:
+
+uninstall:
+	linguas="$(USE_LINGUAS)"; \
+	for lang in $$linguas; do \
+	  rm -f $(DESTDIR)$(localedir)/$$lang/LC_MESSAGES/$(GETTEXT_PACKAGE).mo; \
+	  rm -f $(DESTDIR)$(localedir)/$$lang/LC_MESSAGES/$(GETTEXT_PACKAGE).mo.m; \
+	done
+
+check: all $(GETTEXT_PACKAGE).pot
+	rm -f missing notexist
+	srcdir=$(srcdir) $(INTLTOOL_UPDATE) -m
+	if [ -r missing -o -r notexist ]; then \
+	  exit 1; \
+	fi
+
+mostlyclean:
+	rm -f *.pox $(GETTEXT_PACKAGE).pot *.old.po cat-id-tbl.tmp
+	rm -f .intltool-merge-cache
+
+clean: mostlyclean
+
+distclean: clean
+	rm -f Makefile Makefile.in POTFILES stamp-it
+	rm -f *.mo *.msg *.cat *.cat.m *.gmo
+
+maintainer-clean: distclean
+	@echo "This command is intended for maintainers to use;"
+	@echo "it deletes files that may require special tools to rebuild."
+	rm -f Makefile.in.in
+
+distdir = ../$(PACKAGE)-$(VERSION)/$(subdir)
+dist distdir: $(DISTFILES)
+	dists="$(DISTFILES)"; \
+	extra_dists="$(EXTRA_DISTFILES)"; \
+	for file in $$extra_dists; do \
+	  test -f $(srcdir)/$$file && dists="$$dists $(srcdir)/$$file"; \
+	done; \
+	for file in $$dists; do \
+	  test -f $$file || file="$(srcdir)/$$file"; \
+	  ln $$file $(distdir) 2> /dev/null \
+	    || cp -p $$file $(distdir); \
+	done
+
+update-po: Makefile
+	$(MAKE) $(GETTEXT_PACKAGE).pot
+	tmpdir=`pwd`; \
+	linguas="$(USE_LINGUAS)"; \
+	for lang in $$linguas; do \
+	  echo "$$lang:"; \
+	  result="`$(MSGMERGE) -o $$tmpdir/$$lang.new.po $$lang`"; \
+	  if $$result; then \
+	    if cmp $(srcdir)/$$lang.po $$tmpdir/$$lang.new.po >/dev/null 2>&1; then \
+	      rm -f $$tmpdir/$$lang.new.po; \
+            else \
+	      if mv -f $$tmpdir/$$lang.new.po $$lang.po; then \
+	        :; \
+	      else \
+	        echo "msgmerge for $$lang.po failed: cannot move $$tmpdir/$$lang.new.po to $$lang.po" 1>&2; \
+	        rm -f $$tmpdir/$$lang.new.po; \
+	        exit 1; \
+	      fi; \
+	    fi; \
+	  else \
+	    echo "msgmerge for $$lang.gmo failed!"; \
+	    rm -f $$tmpdir/$$lang.new.po; \
+	  fi; \
+	done
+
+Makefile POTFILES: stamp-it
+	@if test ! -f $@; then \
+	  rm -f stamp-it; \
+	  $(MAKE) stamp-it; \
+	fi
+
+stamp-it: Makefile.in.in $(top_builddir)/config.status POTFILES.in
+	cd $(top_builddir) \
+	  && CONFIG_FILES=$(subdir)/Makefile.in CONFIG_HEADERS= CONFIG_LINKS= \
+	       $(SHELL) ./config.status
+
+# Tell versions [3.59,3.63) of GNU make not to export all variables.
+# Otherwise a system limit (for SysV at least) may be exceeded.
+.NOEXPORT:

@@ -1,0 +1,11 @@
+prefix=/home/incogninto1-1/synfig/_production/build
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=/home/incogninto1-1/synfig/_production/build/include/ETL
+
+Name: ETL
+Description: Extended Template Library
+Requires:
+Version: 1.5.1
+Libs: 
+Cflags: -I/home/incogninto1-1/synfig/ETL -I${includedir}

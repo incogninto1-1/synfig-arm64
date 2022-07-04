@@ -1,0 +1,16 @@
+// Configure file to be used with cmake build
+
+#cmakedefine HAVE_LIBPTHREAD
+
+// header files
+#cmakedefine HAVE_SYS_WAIT_H 1
+#cmakedefine HAVE_SIGNAL_H 1
+#cmakedefine HAVE_TERMIOS_H 1
+#cmakedefine HAVE_PROCESS_H 1
+#cmakedefine HAVE_IO_H 1
+#cmakedefine HAVE_FCNTL_H 1
+
+// defines needed for piped processes
+#cmakedefine HAVE_FORK 1
+#cmakedefine HAVE_PIPE 1
+#cmakedefine HAVE_WAITPID 1

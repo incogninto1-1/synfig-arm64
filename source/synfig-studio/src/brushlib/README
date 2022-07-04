@@ -1,0 +1,8 @@
+brushlib - The MyPaint Brush Library
+
+This is a self-contained C++ library that is isolated from MyPaint.
+
+Documentation can be found from these links:
+https://github.com/mypaint/libmypaint/wiki/Using-Brushlib
+https://github.com/mypaint/mypaint/wiki/Brush-Packages
+
